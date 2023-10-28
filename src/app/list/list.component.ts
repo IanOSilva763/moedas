@@ -1,18 +1,14 @@
   import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
   import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
   import {MatSort, MatSortModule} from '@angular/material/sort';
-  import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-  import {MatInputModule} from '@angular/material/input';
-  import {MatFormFieldModule} from '@angular/material/form-field';
-import { Moedas } from '../Model/Moedas';
-import { ListService } from './list.service';
+  import {MatTableDataSource, MatTableModule } from '@angular/material/table';
+  import { Moedas } from '../Model/Moedas';
+import { PrincipalService } from '../principal/principal.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
-  standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule]
+  styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit{  
   displayedColumns: string[] = ['symbol','name'];
@@ -23,7 +19,7 @@ export class ListComponent implements OnInit{
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
   @ViewChild(MatSort, { static: true }) sort: MatSort | undefined;
 
-  constructor(private listService: ListService) {
+  constructor(private principalService: PrincipalService) {
     this.dataSource = new MatTableDataSource<Moedas>([]);
   }
 
@@ -35,20 +31,20 @@ export class ListComponent implements OnInit{
       this.dataSource.sort = this.sort;
     }
 
-    this.listService.MoedasNomes().subscribe(
+    this.principalService.MoedasNomes().subscribe(
       (response) => {
         if (response.result === 'success' && response.supported_codes) {
-          const currenciesArray: IListCurrencies[] = response.supported_codes.map((currency: any) => {
+          const moedasArray: Moedas[] = response.supported_codes.map((moeda: any) => {
             return {
-              symbol: currency[0],
-              name: currency[1]
+              symbol: moeda[0],
+              name: moeda[1]
             };
           });
-          this.dataSource.data = currenciesArray;
+          this.dataSource.data = moedasArray;
         }
       },
       (error) => {
-        console.error('Erro na solicitação:', error);
+        console.error('Falha na solicitação:', error);
       }
     );
   }
