@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './principal/principal.component';
@@ -37,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatSelectModule,
     FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
