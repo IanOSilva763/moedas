@@ -13,7 +13,7 @@ import { PrincipalService } from '../principal/principal.service';
 export class ListComponent implements OnInit{  
   displayedColumns: string[] = ['symbol','name'];
   dataSource: MatTableDataSource<Moedas> = new MatTableDataSource<Moedas>([]);
-  pageSize: number = 10;
+  pageSize: number = 20;
 
   @ViewChild('input', { static: true }) input: HTMLInputElement | undefined;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
