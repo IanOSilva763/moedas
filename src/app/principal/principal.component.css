@@ -1,0 +1,15 @@
+.texto{
+    text-align: center;
+    font-size: 30px;
+    height: 30%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.titulo{
+    text-align: center;
+    font-size: 40px;
+}
