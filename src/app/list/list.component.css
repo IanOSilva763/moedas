@@ -1,0 +1,54 @@
+/* Estilo para o contêiner de pesquisa */
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  /* Estilo para o formulário de pesquisa */
+  mat-form-field {
+    width: 100%;
+  }
+  
+  /* Estilo para o campo de entrada de pesquisa */
+  mat-input {
+    font-size: 16px;
+  }
+  
+  /* Estilo para a tabela personalizada */
+  .custom-table-container {
+    margin: 20px;
+  }
+  
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .custom-table th {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .custom-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  /* Estilo para as linhas da tabela */
+  .custom-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Estilo para o paginador */
+  mat-paginator {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  

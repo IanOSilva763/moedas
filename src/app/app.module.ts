@@ -8,7 +8,6 @@ import { TopoComponent } from './topo/topo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './list/list.component';
 import { ConverterComponent } from './converter/converter.component';
-import { HistoricoComponent } from './historico/historico.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -23,8 +22,7 @@ import { FormsModule } from '@angular/forms';
     PrincipalComponent,
     TopoComponent,
     ConverterComponent,
-    HistoricoComponent,
-    ListComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

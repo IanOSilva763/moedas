@@ -1,25 +1,50 @@
-<mat-form-field>
-  <mat-label>Moeda de Origem</mat-label>
-  <mat-select [(ngModel)]="moedaOrigem">
-    <mat-option *ngFor="let moeda of moedas" [value]="moeda.symbol">{{ moeda.name }} ({{ moeda.symbol }})</mat-option>
-  </mat-select>
-</mat-form-field>
+<div>
+  <mat-form-field>
+    <mat-label>Moeda de Origem</mat-label>
+    <mat-select [(ngModel)]="moedaOrigem">
+      <mat-option *ngFor="let moeda of moedas" [value]="moeda.symbol">{{ moeda.name }} ({{ moeda.symbol }})</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Moeda de Destino</mat-label>
-  <mat-select [(ngModel)]="novaMoeda">
-    <mat-option *ngFor="let moeda of moedas" [value]="moeda.symbol">{{ moeda.name }} ({{ moeda.symbol }})</mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Moeda de Destino</mat-label>
+    <mat-select [(ngModel)]="novaMoeda">
+      <mat-option *ngFor="let moeda of moedas" [value]="moeda.symbol">{{ moeda.name }} ({{ moeda.symbol }})</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Valor a ser convertido</mat-label>
-  <input matInput [(ngModel)]="valor" type="number">
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Valor a ser convertido</mat-label>
+    <input matInput [(ngModel)]="valor" type="number">
+  </mat-form-field>
 
-<button (click)="converterMoeda()">Converter</button>
+  <button (click)="converterMoeda()">Converter</button>
 
-<div *ngIf="novoValor && taxaConversao">
-  <p>{{ valor }} em {{ moedaOrigem }} é igual ao valor {{ novoValor }} em {{ novaMoeda }}</p>
-  <p>Taxa de conversão da moeda: {{ taxaConversao }}</p>
+  <div *ngIf="novoValor && taxaConversao">
+    <p>{{ valor }} em {{ moedaOrigem }} é igual ao valor {{ novoValor }} em {{ novaMoeda }}</p>
+    <p>Taxa de conversão da moeda: {{ taxaConversao }}</p>
+  </div>
+</div>
+
+<div>
+  <h2>Histórico de Conversões</h2>
+  <table>
+    <tr>
+      <th>Moeda de Origem</th>
+      <th>Moeda de Destino</th>
+      <th>Valor Original</th>
+      <th>Novo Valor</th>
+      <th>Taxa de Conversão</th>
+      <th>Data da Conversão</th>
+    </tr>
+    <tr *ngFor="let conversao of historicoConversoes; let i = index">
+      <td>{{ conversao.moedaOrigem }}</td>
+      <td>{{ conversao.novaMoeda }}</td>
+      <td>{{ conversao.valor }}</td>
+      <td>{{ conversao.novoValor }}</td>
+      <td>{{ conversao.taxaConversao }}</td>
+      <td>{{ conversao.data | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+      <td><button (click)="excluirConversao(i)">Excluir</button></td>
+    </tr>
+  </table>
 </div>
