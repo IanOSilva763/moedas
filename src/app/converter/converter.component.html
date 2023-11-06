@@ -21,7 +21,7 @@
   <button (click)="converterMoeda()">Converter</button>
 
   <div *ngIf="novoValor && taxaConversao">
-    <p>{{ valor }} em {{ moedaOrigem }} é igual ao valor {{ novoValor }} em {{ novaMoeda }}</p>
+    <p>O resultado da conversão de {{ moedaOrigem }}  para {{ novaMoeda }} é igual ao valor {{ novoValor }}</p>
     <p>Taxa de conversão da moeda: {{ taxaConversao }}</p>
   </div>
 </div>
